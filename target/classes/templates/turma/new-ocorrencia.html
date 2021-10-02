@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+	</head>
+	<body>
+	
+		<h1 class="p-3 mb-2 bg-secondary text-white">Nova ocorrência</h1>
+		
+		<form th:action= "@{/turma/ocorrencia}" method="POST" th:object="${ocorrencia}">
+			<div class="form-group">
+			  		
+			  		<div class="form-group row">
+						<label for="titulo" class="col-sm-2 col-form-label ml-2">Titulo</label>
+							<div class="col-sm-5">
+								<input type="text" required id="titulo" name="titulo"  th:field="*{titulo}" placeholder="Titulo da ocorrencia" class="form-control">
+					 		</div>
+			 		</div>
+			 		
+			 		<div class="form-group row">
+						<label for="descricao" class="col-sm-2 col-form-label ml-2">Descricao</label>
+							<div class="col-sm-5">
+								<input type="text" id="descricao" required name="descricao" th:field="*{descricao}" placeholder="Descricao da ocorrencia" class="form-control">
+							</div>
+					</div>
+					<div class="form-group row">
+						<label for="matricula" class="col-sm-2 col-form-label ml-2">Matrícula do aluno</label>
+							<div class="col-sm-5">
+								<input type="text" id="matricula" required name="matricula" th:field="*{matricula}" placeholder="Matrícula da ocorrencia" class="form-control">
+						 	</div>
+					</div> 	
+						 	
+		  			<div class="form-group row">
+						<label for="horaData" class="col-sm-2 col-form-label ml-2">Data</label>
+							<div class="col-sm-5">
+								<input type="datetime-local" id="horaData"  required name="horaData" th:field="*{dataHora}" placeholder="horario" class="form-control">
+							</div>
+					</div>
+				
+				<div class="form-group row">
+					<label for="horaData" class="col-sm-2 col-form-label ml-2">Status</label>
+							<div class="btn-group btn-group-toggle ml-3" data-toggle="buttons">
+							   	<label class="btn btn-secondary active">
+							   		<input type="radio"  name="radio" value="1" checked>Cadastrada
+							   	</label>
+							  	<label class="btn btn-secondary" >
+							  	 	<input type="radio"  name="radio" value="2">Análise
+							  	</label>
+							  	<label class="btn btn-secondary" >
+							  		 <input type="radio"  name="radio" value="3">Cancelada
+							  	</label>
+							  	<label class="btn btn-secondary">
+							  		 <input type="radio"  name="radio" value="4">Resolvida
+							   	</label>
+						   	</div>
+						   	<div class="zrow">
+						  	
+						</div>
+					</div>
+					<div class="btn-group ml-2">
+				  		<button type="submit" class="btn btn-outline-secondary">Salvar</button>
+				  		<a th:href="@{/turma/ocorrencia}" class="btn btn-outline-secondary">Voltar</a>
+					</div>
+			</div>
+		
+		</form>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</body>
+</html>

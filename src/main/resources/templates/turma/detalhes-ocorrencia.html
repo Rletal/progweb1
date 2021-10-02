@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Detalhes do aluno</title>
+		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+	</head>
+	<body>
+		<h1 class="p-3 mb-0 bg-secondary text-white">Detalhes do aluno</h1>
+		
+		<table class="table table-striped mb-0">
+			<thead >
+				<tr>
+					<th>Matricula</th>
+					<th>Nome</th>
+					<th>Ano de nascimento</th>
+					<th>Telefone</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+			<tr class="col-md-2" th:object="${aluno}">
+				<td th:text="*{matricula}"></td>
+				<td th:text="*{nome}"></td>
+				<td th:text="*{anoNascimento}"></td>
+				<td th:text="*{telefone}"></td>
+				<td th:text="*{email}"></td>
+			</tr>
+		</table>
+		<h1 class="p-3 mb-0 bg-secondary text-white">Ocorrencias</h1>
+		<table class="table table-striped">
+			<thead >
+				<tr>
+					<th>Id</th>
+					<th>Titulo</th>
+					<th>Descricao</th>
+					<th>Data e hora</th>
+					<th>Matricula do aluno</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tr th:each="ocorrencia : ${ocorrencias}" th:object="${ocorrencia}" class="col-md-2">
+				<td th:text="*{id}"></td>
+				<td th:text="*{titulo}"></td>
+				<td th:text="*{descricao}"></td>
+				<td th:text="*{dataHora}"></td>
+				<td th:text="*{matricula}"></td>
+				<td th:text="*{status}"></td>
+			</tr>
+		</table>
+		
+		<a th:href="@{/turma}"  class="btn btn-outline-secondary ml-2">Voltar</a>
+		
+	</body>
+</html>

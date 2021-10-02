@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+	</head>
+	<body>
+	
+		<h1 class="p-3 mb-0 bg-secondary text-white">Listagem de ocorrencias</h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Titulo</th>
+					<th>Descricao</th>
+					<th>Data e Hora</th>
+					<th>Matricula do aluno</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tr th:each="ocorrencia : ${ocorrencias}" th:object="${ocorrencia}" class="col-md-2">
+				<td th:text="*{id}"></td>
+				<td th:text="*{titulo}">-</td>
+				<td th:text="*{descricao}">-</td>
+				<td th:text="*{dataHora}">-</td>
+				<td th:text="*{matricula}">-</td>
+				<td th:text="*{status}">-</td>
+			</tr>
+		</table>
+		<div class="btn-group row ml-2">
+			<a th:href="@{/turma/nova}" class="btn btn-outline-secondary">Nova ocorrencia</a>
+			<a th:href="@{/turma}" class="btn btn-outline-secondary">Voltar</a>
+		</div>
+	</body>
+</html>

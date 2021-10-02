@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Novo usuário</title>
+		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+	</head>
+	<body>	
+		<span><h1  class="p-3 mb-2 bg-secondary text-white">Novo usuário</h1></span>
+			<form th:action="@{/new-usuario}" method="POST" th:object="${usuario}">
+				<div class="form-group">
+					<div class="form-group row">
+						<label class="col-sm-1 col-form-label ml-2" for="nome">Nome</label>
+							<div class="col-sm-5">
+								<input type="text" id="nome" name="nome" th:field="*{nome}" placeholder="Fulano" class="form-control"/>
+							</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-1 col-form-label ml-2" for="tipo">Tipo</label>
+							<div class="btn-group btn-group-toggle ml-3" data-toggle="buttons">
+								<label class="btn btn-secondary active">
+							   		<input type="radio"  name="tipo" value="administrador" checked>Administrador
+							   	</label>
+							  	<label class="btn btn-secondary" >
+							  	 	<input type="radio"  name="tipo" value="comum">Comum
+							  	</label>
+							</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-1 col-form-label ml-2" for="login">Login</label>
+							<div class="col-sm-5">
+								<input type="text" id="login" name="login" th:field="*{login}" placeholder="nome@exemplo.com" class="form-control"/>
+							</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-1 col-form-label ml-2" for="senha">Senha</label>
+							<div class="col-sm-5">
+								<input type="text" id="senha" name="senha" th:field="*{senha}" placeholder="123asd" class="form-control"/>
+							</div>
+					</div>
+					<div class="btn-group row ml-2">
+						<button type="submit" class="btn btn-outline-secondary ml-2">Salvar</button>
+						
+						<a th:href="@{/turma}" class="btn btn-outline-secondary">Voltar</a>
+						
+					</div>
+				</div>
+			</form>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</body>
+</html>

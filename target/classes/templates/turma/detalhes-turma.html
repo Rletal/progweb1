@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Detalhes da turma</title>
+		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+	</head>
+	<body>
+		<h1 class="p-3 mb-0 bg-secondary text-white">Detalhes da turma</h1>
+		
+		<table class="table table-striped mb-0">
+			<thead >
+				<tr>
+					<th>Código</th>
+					<th>Nome</th>
+					<th>Ano</th>
+					<th>Período</th>
+				</tr>
+			</thead>
+			<tr class="col-md-2" th:object="${turma}">
+				<td th:text="*{codigo}"></td>
+				<td th:text="*{nome}"></td>
+				<td th:text="*{ano}"></td>
+				<td th:text="*{periodo}"></td>
+			</tr>
+			
+		</table>
+		
+		<h1 class="p-3 mb-0 bg-secondary text-white">Alunos da turma</h1>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Sobrenome</th>
+					<th>Data de Nascimento</th>
+					<th>Endereço</th>
+					
+				</tr>
+			</thead>
+			<tr th:each="aluno, iStat : ${aluno}" th:object="${aluno}" class="col-md-2">
+				
+				<td th:text="*{nome}"></td>
+				<td th:text="*{sobreNome}"></td>
+				<td th:text="*{dataNascimento}"></td>
+				<td th:text="*{endereco}"></td>
+				<td>
+					<!-- <form action="/turma/detalhes-ocorrencia" th:object="${aluno}"> 
+						<a th:href="@{/turma/editarAluno/__${aluno.matricula}__}" class="btn btn-outline-secondary">Editar</a>
+						<a class="btn btn-outline-secondary" th:href="@{/turma/detalhes/__${aluno.matricula}__ + __${turma.codigo}__}">Remover</a>-->
+					</form>
+				</td>
+			</tr>
+		</table>
+		
+		<a th:href="@{/turma}"  class="btn btn-outline-secondary ml-2" >Voltar</a>
+		
+	</body>
+</html>

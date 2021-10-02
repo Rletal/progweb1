@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Lista de usuários</title>
+		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+	</head>
+	<body>
+	
+		<h1 class="p-3 mb-0 bg-secondary text-white">Listagem de usuarios</h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>Tipo</th>
+					<th>Login</th>
+					<th>Senha</th>
+				</tr>
+			</thead>
+			<tr th:each="usuario : ${usuarios}" th:object="${usuario}" class="col-md-2">
+				<td th:text="*{id}"></td>
+				<td th:text="*{nome}">-</td>
+				<td th:text="*{tipo}">-</td>
+				<td th:text="*{login}">-</td>
+				<td th:text="*{senha}">-</td>
+			</tr>
+		</table>
+		<div class="btn-group row ml-2">
+			<a th:href="@{/new-usuario}" class="btn btn-outline-secondary">Novo usuário</a>
+			<a th:href="@{/turma}" class="btn btn-outline-secondary">Voltar</a>
+		</div>
+	</body>
+</html>

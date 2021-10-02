@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title th:unless="${aluno.matricula}">Novo Aluno</title>
+		<title th:if="${aluno.matricula}">Editar Aluno</title>
+		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+	</head>
+	<body>
+	
+		<h1 th:unless="${aluno.matricula}" class="p-3 mb-2 bg-secondary text-white">Novo Aluno</h1>
+		<h1 th:if="${aluno.matricula}" class="p-3 mb-2 bg-secondary text-white">Editar Aluno</h1>
+		
+		<form th:action="@{/novoAluno}" method="POST" th:object="${aluno}">
+			<div class="form-group">
+					<div class="form-group row">
+						<label  class="col-sm-2 col-form-label ml-2" for="matricula">Matrícula</label>
+							<div class="col-sm-5">
+								<input type="text" id="matricula" name="matricula" th:field="*{matricula}" placeholder="00000000000000" class="form-control"  th:readonly="${aluno.matricula != null}"/>
+							</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label ml-2" for="nome">Nome</label>
+							<div class="col-sm-5">
+								<input type="text" id="nome" name="nome" th:field="*{nome}" placeholder="Nome" class="form-control"/>
+							</div>
+					</div>
+					<div class="form-group row">
+						<label  class="col-sm-2 col-form-label ml-2" for="anoNascimento">Ano de nascimento</label>
+							<div class="col-sm-5">
+								<input type="text" id="anoNascimento" name="anoNascimento" th:field="*{anoNascimento}" placeholder="2000" class="form-control"/>
+							</div>
+					</div>
+					<div class="form-group row">
+						<label  class="col-sm-2 col-form-label ml-2" for="telefone">Telefone</label>
+							<div class="col-sm-5">
+								<input type="text" id="telefone" name="telefone" th:field="*{telefone}" placeholder="000000000" class="form-control"/>
+							</div>
+					</div>
+					<div class="form-group row">
+						<label  class="col-sm-2 col-form-label ml-2" for="email">Email</label>
+							<div class="col-sm-5">
+								<input type="text" id="email" name="email" th:field="*{email}" placeholder="Email" class="form-control"/>
+							</div>
+					</div>
+					
+					<div th:if="${matricula}" class="form-group row">
+						<label  class="col-sm-2 col-form-label ml-2" for="pos">Turma</label>
+							<div class="btn-group">
+								<select  class="btn btn-secondary btn-sm ml-3" name="pos" id="turma" >
+									<option class="btn btn-secondary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  th:each="turma : ${turmas}" th:selected="${aluno.turma.codigo == turma.codigo}" th:object="${turma}" th:value="*{codigo}" th:text="*{codigo}" th:hidden="${aluno.turma.codigo != turma.codigo}"></option>
+								</select>
+							</div>
+					</div>
+					<div th:unless="${matricula}" class="form-group row">
+						<label  class="col-sm-2 col-form-label ml-2" for="pos">Turma</label>
+							<div class="btn-group">
+								<select  class="btn btn-secondary btn-sm ml-3" name="pos" id="turma" >
+									<option class="btn btn-secondary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  th:each="turma : ${turmas}" th:object="${turma}" th:value="*{codigo}" th:text="*{codigo}"></option>
+								</select>
+							</div>
+					</div>
+					
+					<div class="btn-group row ml-2">
+						<button th:unless="${matricula}" type="submit" class="btn btn-outline-secondary ml-2">Salvar</button>
+						<button th:if="${matricula}" type="submit" class="btn btn-outline-secondary">Editar</button>
+						<a th:href="@{/turma}" class="btn btn-outline-secondary">Voltar</a>
+					</div>
+					
+					<input type="hidden" name="edit" value="editando" th:if=*{matricula}>
+					<input type="hidden" name="matri" th:value="${aluno.matricula}">
+			</div>
+		</form>
+	</body>
+</html>

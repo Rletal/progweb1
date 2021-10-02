@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title th:unless="${turma.codigo == null}">Editar Turma</title>
+		<title th:if="${turma.codigo == null}">Nova Turma</title>
+		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+	</head>
+	<body>	
+		<h1  class="p-3 mb-2 bg-secondary text-white">Nova Turma</h1>
+			<form th:action="@{/api/turmas/novo}" method="POST" th:object="${turma}">
+				<div class="form-group">
+					<div class="form-group row">
+						<label class="col-sm-1 col-form-label ml-2" for="nome">Nome</label>
+							<div class="col-sm-5">
+								<input type="text" id="nome" name="nome" th:field="*{nome}" placeholder="nome" class="form-control"/>
+							</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-1 col-form-label ml-2" for="codigo">Código</label>
+							<div class="col-sm-5">
+								<input type="text" id="codigo" name="codigo" th:field="*{codigo}" placeholder="NOMEANOPERIODO" class="form-control"/>
+							</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-1 col-form-label ml-2" for="ano">Ano</label>
+							<div class="col-sm-5">
+								<input type="text" id="ano" name="ano" th:field="*{ano}" placeholder="1932" class="form-control"/>
+							</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-1 col-form-label ml-2" for="periodo">Período</label>
+							<div class="col-sm-5">
+								<input type="text" id="periodo" name="periodo" th:field="*{periodo}" placeholder="1 ou 2" class="form-control"/>
+							</div>
+					</div>
+					<div class="btn-group row ml-2">
+						<button type="submit" class="btn btn-outline-secondary ml-2">Salvar</button>
+						<a th:href="@{/api/turmas}" class="btn btn-outline-secondary">Voltar</a>
+					</div>
+				</div>
+			</form>
+	</body>
+</html>

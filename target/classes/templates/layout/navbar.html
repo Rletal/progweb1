@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link th:rel="stylesheet" th:href="@(/webjars/bootstrap/4.5.3/css/bootstrap.min.css)"/>
+</head>
+<body>
+	<div th:fragment="navbar" class="mb-0">
+		<nav class="navbar navbar-light bg-dark pb-0 text-white mb-0" aria-label="breadcrumb">
+			<div>
+				<div class=" text-center breadcrumb bg-dark pb-1 text-white">
+					<a class="breadcrumb-item text-white" th:href="@{/turma}">Turmas</a>
+					<a class="breadcrumb-item text-white" th:href="@{/turma/ocorrencia}">Ocorrências</a>
+				</div>
+			</div>
+		</nav>
+	</div>
+</body>
+</html>
