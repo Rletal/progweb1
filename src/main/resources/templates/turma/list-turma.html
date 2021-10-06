@@ -26,13 +26,12 @@
 				</tr>
 			</thead>
 			<tr th:each="turma, iStat : ${turmas}" th:object="${turma}" class="col-md-2">
-				<td th:text="*{nome}"></td>
 				<td th:text="*{codigo}"></td>
+				<td th:text="*{nome}"></td>
 				<td th:text="*{ano}"></td>
 				<td th:text="*{periodo}"></td>
 				<td>
 					<form action="/api/turmas">
-						<a th:href="@{/api/turmas/__${turma.id}__}" class="btn btn-outline-secondary" >Detalhar</a>
 						<a th:href="@{/api/turmas/editar/__${turma.id}__}" class="btn btn-outline-secondary" >Editar</a>
 						<a class="btn btn-outline-secondary" th:href="@{/api/turmas/deletar/__${turma.id}__}" onclick="return confirm('Tem certeza?')">Remover</a>
 					</form>
@@ -42,7 +41,6 @@
 		</table>
 	
 		<div class="btn-group ml-2">
-			<a th:href="@{/api/turmas/novoAluno}" class="btn btn-outline-secondary">Novo aluno</a>
 			<a th:href="@{/api/turmas/novo}" class="btn btn-outline-secondary">Nova turma</a>
 		</div>
 	</body>
