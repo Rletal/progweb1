@@ -105,10 +105,10 @@ public class TurmaController {
 	public ModelAndView createTurma(@Validated TurmaEntity turma) {
 		try {
 			turmaRepository.save(turma);
-			return getTurma();
+			return new ModelAndView("redirect:/api/turmas");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ModelAndView();
+			return new ModelAndView("redirect:/api/turmas");
 		}
 	}
 
@@ -127,9 +127,9 @@ public class TurmaController {
 				_turma.setPeriodo(turma.getPeriodo());
 				
 				turmaRepository.save(_turma);
-				return getTurma();
+				return new ModelAndView("redirect:/api/turmas");
 			} else {
-				return getTurma();
+				return new ModelAndView("redirect:/api/turmas");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -141,10 +141,11 @@ public class TurmaController {
 	public ModelAndView deleteTurma(@PathVariable("id") long id) {
 		try {
 			turmaRepository.deleteById(id);
-			return getTurma();
+			return new ModelAndView("redirect:/api/turmas");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ModelAndView();
+			return new ModelAndView("redirect:/api/turmas");
+					
 		}
 	}
 
